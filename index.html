@@ -7,7 +7,8 @@
     body {
       margin: 0;
       padding: 0;
-      background: "rocket-league.jpg"; /* Black background */
+      background: url('background-image.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #00FFFF; /* Aqua text color */
     }
 
@@ -16,7 +17,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px;
-      background-color: #000; /* Black header background */
+      background-color: rgba(0, 0, 0, 0.5); /* Black header background with some transparency */
     }
 
     header img {
@@ -29,6 +30,20 @@
 
     h1 {
       margin: 0;
+    }
+
+    .product-container {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px;
+    }
+
+    .product {
+      border: 2px solid #00FFFF; /* Aqua border */
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8); /* White background with some transparency */
     }
 
     .buttons-container {
