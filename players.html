@@ -16,7 +16,7 @@
     header {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between; /* Adjusted to space between */
       padding: 20px;
       background-color: rgba(0, 0, 0, 0.8); /* Black header background with transparency */
     }
@@ -29,6 +29,20 @@
     h1 {
       margin: 0;
       font-size: 36px;
+    }
+
+    .home-button {
+      background-color: #3498db; /* Rocket League blue */
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .home-button:hover {
+      background-color: #2980b9; /* Darker blue on hover */
     }
 
     .players-section {
@@ -69,6 +83,7 @@
 <body>
   <header>
     <h1>Regalitys Players</h1>
+    <a href="regality-home.html" class="home-button">Home</a>
   </header>
 
   <div class="players-section">
