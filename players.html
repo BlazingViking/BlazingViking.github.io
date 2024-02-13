@@ -1,51 +1,64 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link rel="icon" href="IMG_0167.jpeg" type="image/png">
-    <title>Regality</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
+<html lang="en">
+<head>
+  <link rel="icon" href="IMG_0167.jpeg" type="image/png">
+  <title>Regality</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000; /* Black background */
+      color: #00FFFF; /* Aqua text color */
+    }
 
-      header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px;
-        background-color: #f2f2f2; /* Optional: Add a background color to the header */
-      }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: #000; /* Black header background */
+    }
 
-      header img {
-        width: 50px; /* Adjust the width of the logo as needed */
-        height: 50px; /* Set the height to match the width for a circular shape */
-        border-radius: 50%; /* Make the image round */
-        margin-right: 10px; /* Add some spacing between the logo and the title */
-        overflow: hidden; /* Ensure the border-radius works as expected */
-      }
+    header img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+      overflow: hidden;
+    }
 
-      h1 {
-        margin: 0;
-      }
+    h1 {
+      margin: 0;
+    }
 
-      .buttons-container {
-        display: flex;
-      }
+    .buttons-container {
+      display: flex;
+    }
 
-      .button {
-        margin-left: 10px; /* Add spacing between buttons */
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div>
-        <img src="IMG_0167.jpeg" alt="Logo">
-        <h1>Regality</h1>
-      </div>
-    
-    </header>
-    <h1>hello!!</h1>
-  </body>
+    .button {
+      margin-left: 10px;
+      background-color: #00FFFF; /* Aqua button background color */
+      color: #000; /* Black button text color */
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #008080; /* Darker Aqua on hover */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <img src="IMG_0167.jpeg" alt="Logo">
+      <h1>Regality</h1>
+    </div>
+    <div class="buttons-container">
+      <button class="button" onclick="window.location.href='players.html'">Go to Players</button>
+    </div>
+  </header>
+  <h1>hello!!</h1>
+</body>
 </html>
