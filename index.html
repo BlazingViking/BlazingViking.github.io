@@ -13,12 +13,15 @@
         display: flex;
         align-items: center;
         padding: 10px;
-        background-color: #f2f2f2; 
+        background-color: #f2f2f2; /* Optional: Add a background color to the header */
       }
 
       header img {
-        width: 50px; 
-        margin-right: 10px; 
+        width: 50px; /* Adjust the width of the logo as needed */
+        height: 50px; /* Set the height to match the width for a circular shape */
+        border-radius: 50%; /* Make the image round */
+        margin-right: 10px; /* Add some spacing between the logo and the title */
+        overflow: hidden; /* Ensure the border-radius works as expected */
       }
 
       h1 {
