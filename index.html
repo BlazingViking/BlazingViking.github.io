@@ -62,6 +62,22 @@
     .button:hover {
       background-color: #008080; /* Darker Aqua on hover */
     }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      width: 300px;
+      padding: 20px;
+      border: 2px solid #00FFFF; /* Aqua border color */
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.8); /* White background with transparency */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    }
   </style>
 </head>
 <body>
@@ -75,12 +91,14 @@
       <button class="button" onclick="window.location.href='shop.html'">Shop</button>
     </div>
   </header>
-    <div style="align-items: center;">
-      <h1>Welcome to Regalitys homepage!</h1>
-      <h3>We are the best team from Finland looking to get into the RLCS. Right now we have 2 player which are around diamond in rank. Check more about the players here:</h3>
+    <div style="align-items: center;" class="container">
+      <div>
+        <h1>Welcome to Regalitys homepage!</h1>
+        <h3>We are the best team from Finland looking to get into the RLCS. Right now we have 2 player which are around diamond in rank. Check more about the players here:</h3>
+      </div>
     </div>
     <div class="button-container">
-      <button class="" onclick="window.location.href='players.html'">Learn more</button>
+      <button class="button" onclick="window.location.href='players.html'">Learn more</button>
     </div>
     <div>
       We are growing on our socials right now! Go check them out.
