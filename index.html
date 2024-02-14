@@ -7,7 +7,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: white no-repeat center center fixed;
+      background: url('rocket-league.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #00FFFF; /* Aqua text color */
     }
@@ -66,8 +66,9 @@
     .container {
       display: flex;
       justify-content: center; /* Center horizontally */
-      align-items: flex-start;
+      align-items: center;
       height: 100vh;
+      flex-direction: column; /* Align items vertically */
     }
 
     .box {
@@ -78,6 +79,7 @@
       background-color: rgba(255, 255, 255, 0.8);
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       text-align: center;
+      margin-bottom: 20px; /* Add margin to separate the boxes */
     }
 
     .box h1, .box h3 {
@@ -88,6 +90,16 @@
       display: flex;
       justify-content: center;
       margin-top: 20px;
+    }
+
+    .no-box {
+      width: 80%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .no-box h1, .no-box h3 {
+      margin: 10px 0;
     }
   </style>
 </head>
@@ -104,6 +116,14 @@
   </header>
   <div class="container" style="color: black;">
     <div class="box">
+      <h1>Welcome to Regality's homepage!</h1>
+      <h3>We are the best team from Finland looking to get into the RLCS. Right now we have 2 players who are around the diamond rank. Check more about the players here:</h3>
+      <div class="button-container">
+        <button class="button" onclick="window.location.href='players.html'">Learn more</button>
+      </div>
+    </div>
+
+    <div class="no-box">
       <h1>Welcome to Regality's homepage!</h1>
       <h3>We are the best team from Finland looking to get into the RLCS. Right now we have 2 players who are around the diamond rank. Check more about the players here:</h3>
       <div class="button-container">
