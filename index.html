@@ -10,6 +10,7 @@
       background: white no-repeat center center fixed;
       background-size: cover;
       color: #00FFFF; /* Aqua text color */
+      font-family: 'Arial', sans-serif;
     }
 
     header {
@@ -103,6 +104,32 @@
     .no-box h1, .no-box h3 {
       margin: 10px 0;
     }
+
+    /* Social Media Box Styling */
+    .social-media-box {
+      width: 60%;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #00FFFF; /* Aqua background */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      text-align: center;
+      color: black;
+    }
+
+    .social-media-links a img {
+      width: 30px; /* Adjust the size of social media logos */
+      margin: 0 10px; /* Add some spacing between logos */
+    }
+
+    .social-media-links a {
+      text-decoration: none;
+      color: #000; /* Black link color */
+    }
+
+    .social-media-links a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -112,7 +139,6 @@
       <h1>Regality</h1>
     </div>
     <div class="buttons-container">
-      <!-- <button class="button" onclick="window.location.href='players.html'">Players</button> -->
       <button class="button" onclick="window.location.href='shop.html'">Shop</button>
     </div>
   </header>
@@ -122,6 +148,16 @@
       <h3>We are the best team from Finland looking to get into the RLCS. Right now we have 2 players who are around the diamond rank. Check more about the players here:</h3>
       <div class="button-container">
         <button class="button" onclick="window.location.href='players.html'">Learn more</button>
+      </div>
+    </div>
+    <div class="social-media-box">
+      <h3>Find us on Social Media:</h3>
+      <div class="social-media-links">
+        <!-- Replace these placeholder URLs with actual social media logos and links -->
+        <a href="https://twitter.com/" target="_blank"><img src="twitter_logo.png" alt="Twitter"></a>
+        <a href="https://www.youtube.com/" target="_blank"><img src="youtube_logo.png" alt="YouTube"></a>
+        <a href="https://discord.com/" target="_blank"><img src="discord_logo.png" alt="Discord"></a>
+        <a href="https://www.twitch.tv/" target="_blank"><img src="twitch_logo.png" alt="Twitch"></a>
       </div>
     </div>
   </div>
