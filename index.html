@@ -150,8 +150,33 @@
     }
 
     .cart-icon {
-      width: 30px; /* Adjust the size as needed */
-      height: 30px; /* Adjust the size as needed */
+      width: 35px; /* Adjust the size as needed */
+      height: 35px; /* Adjust the size as needed */
+      margin-left: 10px;
+    }
+
+    .cart-container {
+      position: fixed;
+      top: 0;
+      right: -300px; /* Start off-screen */
+      width: 300px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+      transition: right 0.3s ease-in-out;
+      overflow-y: auto; /* Enable scrolling if there are many items */
+    }
+
+    .cart-content {
+      padding: 20px;
+      color: white;
+    }
+
+    .close-cart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: white;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -168,6 +193,16 @@
       </button>
     </div>
   </header>
+  
+  <!-- Cart container -->
+  <div class="cart-container">
+    <div class="close-cart" onclick="toggleCart()">X</div>
+    <div class="cart-content">
+      <h2>Shopping Cart</h2>
+      <ul id="cartItems"></ul>
+    </div>
+  </div>
+  
   <div class="container">
     <div class="no-box">
       <h1>Welcome to Regality's homepage!</h1>
@@ -230,12 +265,7 @@
     </div>
   </div>
 </div>
-  <script>
-    function addToCart(productId) {
-      // Implement logic to add the selected product to the shopping cart
-      alert("Product " + productId + " added to cart!");
-    }
-
+  <script> 
     let shoppingCart = [];
 
     function addToCart(productId) {
@@ -253,12 +283,31 @@
       // Display a confirmation message (you can customize this as needed)
       alert("Product " + productId + " added to cart!");
 
-      // You can update the UI or send the cart data to a server here
+      // Update the UI and show the cart
+      updateCartUI();
     }
 
-    function viewCart() {
-      // Display the current shopping cart content
-      alert("Shopping Cart:\n\n" + JSON.stringify(shoppingCart, null, 2));
+    function updateCartUI() {
+      const cartItemsList = document.getElementById('cartItems');
+      cartItemsList.innerHTML = '';
+
+      if (shoppingCart.length === 0) {
+        cartItemsList.innerHTML = '<li>No items in the cart</li>';
+      } else {
+        shoppingCart.forEach(item => {
+          const listItem = document.createElement('li');
+          listItem.textContent = `Product ${item.id} - Quantity: ${item.quantity}`;
+          cartItemsList.appendChild(listItem);
+        });
+      }
+
+      // Toggle the cart to slide in
+      toggleCart();
+    }
+
+    function toggleCart() {
+      const cartContainer = document.querySelector('.cart-container');
+      cartContainer.style.right = (cartContainer.style.right === '0px') ? '-300px' : '0px';
     }
   </script>
 </body>
