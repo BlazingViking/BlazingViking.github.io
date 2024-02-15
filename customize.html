@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Customization</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
 
+    form {
+      max-width: 400px;
+      margin: 50px auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #00FFFF;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <form id="customizationForm">
+    <label for="size">Choose Size:</label>
+    <select id="size" name="size">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+    </select>
+
+    <label for="name">Add Your Name (T-Shirts only):</label>
+    <input type="text" id="name" name="name">
+
+    <button type="button" onclick="addToCart()">Add to Cart</button>
+  </form>
+
+  <script>
+    function addToCart() {
+      const size = document.getElementById('size').value;
+      const name = document.getElementById('name').value;
+
+      // Send the chosen size and name back to the main site
+      const params = new URLSearchParams({
+        size: size,
+        name: name
+      });
+
+      // Redirect back to the main site with the chosen options
+      window.location.href = 'main-site.html?' + params.toString();
+    }
+  </script>
+</body>
+</html>
