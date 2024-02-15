@@ -268,20 +268,17 @@
   <script> 
     let shoppingCart = [];
 
-    function addToCart(productId) {
-      // Check if the product is already in the cart
-      const existingProduct = shoppingCart.find(item => item.id === productId);
-
-      if (existingProduct) {
-        // If the product is already in the cart, increase its quantity
-        existingProduct.quantity += 1;
-      } else {
-        // If the product is not in the cart, add it with a quantity of 1
-        shoppingCart.push({ id: productId, quantity: 1 });
-      }
+    function addToCart(productId, productName, productType) {
+      // Store product details in the shopping cart
+      shoppingCart.push({
+        id: productId,
+        name: productName,
+        type: productType,
+        quantity: 1
+      });
 
       // Display a confirmation message (you can customize this as needed)
-      alert("Product " + productId + " added to cart!");
+      alert("Product " + productName + " added to cart!");
 
       // Update the UI and show the cart
       updateCartUI();
@@ -296,7 +293,7 @@
       } else {
         shoppingCart.forEach(item => {
           const listItem = document.createElement('li');
-          listItem.textContent = `Product ${item.id} - Quantity: ${item.quantity}`;
+          listItem.textContent = `${item.name} - Quantity: ${item.quantity}`;
           cartItemsList.appendChild(listItem);
         });
       }
