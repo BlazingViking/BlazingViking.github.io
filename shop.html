@@ -95,6 +95,27 @@
       // Implement logic to add the selected product to the shopping cart
       alert("Product " + productId + " added to cart!");
     }
+
+    // Define an array to store the items in the shopping cart
+    let shoppingCart = [];
+
+    function addToCart(productId) {
+      // Check if the product is already in the cart
+      const existingProduct = shoppingCart.find(item => item.id === productId);
+
+      if (existingProduct) {
+        // If the product is already in the cart, increase its quantity
+        existingProduct.quantity += 1;
+      } else {
+        // If the product is not in the cart, add it with a quantity of 1
+        shoppingCart.push({ id: productId, quantity: 1 });
+      }
+
+      // Display a confirmation message (you can customize this as needed)
+      alert("Product " + productId + " added to cart!");
+
+      // You can update the UI or send the cart data to a server here
+    }
   </script>
 </body>
 </html>
