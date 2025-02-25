@@ -1,9 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NAME</title>
-  <link rel="stylesheet", href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Subtitle Generator</title>
 </head>
-</html>
+<body>
+    <h2>Upload Video for Subtitles</h2>
+    <input type="file" id="videoUpload">
+    <button onclick="uploadVideo()">Generate Subtitles</button>
+    <p id="subtitles"></p>
 
+    <script>
+        async function uploadVideo() {
+            let file = document.getElementById("videoUpload").files[0];
+            let formData = new FormData();
+            formData.append("video", file);
+
+            let response = await fetch("http://127.0.0.1:5000/upload", {
+                method: "POST",
+                body: formData
+            });
+
+            let data = await response.json();
+            document.getElementById("subtitles").innerText = data.subtitles;
+        }
+    </script>
+</body>
+</html>
