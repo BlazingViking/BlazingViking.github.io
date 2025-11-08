@@ -1,143 +1,20 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cellby – Hyr, hyr ut & köp teknik</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #0066cc;
-      --dark-color: #1c1c1c;
-      --light-color: #f9f9f9;
-      --accent-color: #ff5722;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--light-color);
-      color: var(--dark-color);
-      line-height: 1.6;
-    }
-
-    header {
-      background: linear-gradient(to right, #003366, #0066cc);
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: var(--primary-color);
-      gap: 30px;
-      padding: 15px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: var(--accent-color);
-    }
-
-    main {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    section {
-      margin-bottom: 80px;
-    }
-
-    section h2 {
-      font-size: 2em;
-      color: var(--primary-color);
-      margin-bottom: 15px;
-    }
-
-    section p {
-      font-size: 1.1em;
-      color: #333;
-    }
-
-    .bulle-offer {
-      background-color: white;
-      padding: 40px;
-      border-radius: 12px;
-      border-left: 8px solid var(--accent-color);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    footer {
-      background-color: var(--dark-color);
-      color: white;
-      text-align: center;
-      padding: 30px 20px;
-      margin-top: 40px;
-    }
-
-    footer p {
-      font-size: 0.9em;
-    }
-
-    a {
-      color: var(--accent-color);
-    }
-  </style>
+  <title>AI Chatbot</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<script src="//code.tidio.co/ie85uivldqjx1hsx2nath7rmedtuvnic.js" async></script>
 <body>
-  <header>
-    <h1>Välkommen till Cellby</h1>
-    <p>Hyr, hyr ut och köp teknik – enkelt, tryggt och professionellt</p>
-  </header>
-
-  <nav>
-    <a href="#hyr">Hyr</a>
-    <a href="#hyrut">Hyr ut</a>
-    <a href="#bulle">BOLLE-erbjudande</a>
-    <a href="#kontakt">Kontakt</a>
-  </nav>
-
-  <main>
-    <section id="hyr">
-      <h2>Hyr produkter</h2>
-      <p>Behöver du något tillfälligt? Hyr teknik, verktyg, spelkonsoler och mer från andra privatpersoner nära dig. Spara pengar och minska konsumtionen!</p>
-    </section>
-
-    <section id="hyrut">
-      <h2>Hyr ut dina prylar</h2>
-      <p>Tjäna pengar på saker du inte använder. Skapa ett konto, lägg upp en annons med bilder och priser – vi hjälper dig med allt.</p>
-    </section>
-
-    <section id="bulle" class="bulle-offer">
-      <h2>Exklusivt BOLLE-erbjudande</h2>
-      <p>Genom vårt samarbete med <strong>BULLE</strong> får du tillgång till deras nyaste smartphones till <strong>50% rabatt</strong>! Gäller endast försäljning, inga abonnemang.</p>
-      <p><strong>OBS:</strong> Begränsat antal – först till kvarn!</p>
-    </section>
-
-    <section id="kontakt">
-      <h2>Kontakta oss</h2>
-      <p>Har du frågor, feedback eller vill bli partner? Maila oss på <a href="mailto:support@cellby.se">support@cellby.se</a> eller fyll i vårt kontaktformulär (kommer snart).</p>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Cellby. Alla rättigheter förbehållna. | Org.nr: 556123-4567</p>
-  </footer>
+  <div id="chatbot">
+    <div id="chat-header">💬 AI Chatbot</div>
+    <div id="chat-box"></div>
+    <div id="chat-input">
+      <input type="text" id="user-input" placeholder="Type your message...">
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
