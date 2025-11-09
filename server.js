@@ -1,35 +1,60 @@
-import express from "express";
-import fetch from "node-fetch";
-import dotenv from "dotenv";
-import cors from "cors";
+// Frontend script: sends message to backend and shows replies
 
-dotenv.config();
+const chatBox = document.getElementById('chat-box');
+const userInput = document.getElementById('user-input');
+const sendBtn = document.getElementById('send-btn');
 
-const app = express();
-app.use(express.json());
-app.use(cors());
+// LOCAL: if testing on your machine use this:
+// const API_URL = "http://localhost:3000/api/chat";
 
-// Hugging Face API call
-app.post("/api/chat", async (req, res) => {
-  const { message } = req.body;
+// DEPLOYED (replace with your real URL after deploy):
+const API_URL = "https://chatbotdemo-nine.vercel.app/api/chat"; // change when deployed
 
+function addMessage(text, sender) {
+  const msg = document.createElement('div');
+  msg.classList.add('message', sender);
+  msg.innerText = text;
+  chatBox.appendChild(msg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+async function getBotReply(message) {
   try {
-    const response = await fetch("https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill", {
+    const resp = await fetch(API_URL, {
       method: "POST",
-      headers: {
-        "Authorization": `Bearer ${process.env.HF_API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ inputs: message }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message })
     });
 
-    const data = await response.json();
-    res.json({ reply: data[0]?.generated_text || "I’m not sure what you mean." });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ reply: "Error calling AI API." });
-  }
-});
+    if (!resp.ok) {
+      console.error("Bad response", resp.status, await resp.text());
+      return "⚠️ There was a problem connecting to the server.";
+    }
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
+    const data = await resp.json();
+    return data.reply || "Sorry, I didn't understand that.";
+  } catch (err) {
+    console.error("Fetch error:", err);
+    return "⚠️ There was a problem connecting to the server.";
+  }
+}
+
+sendBtn.onclick = async () => {
+  const message = userInput.value.trim();
+  if (!message) return;
+  addMessage(message, "user");
+  userInput.value = "";
+
+  // Add temporary typing message
+  addMessage("Typing...", "bot");
+
+  const botReply = await getBotReply(message);
+
+  // Replace the typing message with actual reply
+  const last = chatBox.lastChild;
+  if (last) last.innerText = botReply;
+};
+
+userInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") sendBtn.click();
+});
