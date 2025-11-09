@@ -1,38 +1,40 @@
-const chatBox = document.getElementById('chat-box');
-const userInput = document.getElementById('user-input');
-const sendBtn = document.getElementById('send-btn');
+const chatBox = document.createElement("div");
+chatBox.innerHTML = `
+  <h3>💬 AI Chatbot</h3>
+  <div id="chat-output" style="height:200px; overflow:auto; border:1px solid #aaa; padding:5px; margin-bottom:10px;"></div>
+  <input id="user-input" placeholder="Type your message..." style="width:70%;">
+  <button id="send-btn">Send</button>
+`;
+document.body.appendChild(chatBox);
 
-const HF_API_KEY = "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"; // 🔑 Replace with your token for now
+const output = document.getElementById("chat-output");
+const input = document.getElementById("user-input");
+const sendBtn = document.getElementById("send-btn");
 
-async function getBotReply(message) {
-  const response = await fetch("https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${HF_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ inputs: message }),
-  });
+sendBtn.addEventListener("click", sendMessage);
+input.addEventListener("keypress", e => {
+  if (e.key === "Enter") sendMessage();
+});
 
-  const data = await response.json();
-  return data[0]?.generated_text || "Sorry, I didn’t understand that.";
+async function sendMessage() {
+  const text = input.value.trim();
+  if (!text) return;
+
+  output.innerHTML += `<div><b>You:</b> ${text}</div>`;
+  input.value = "";
+
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text }),
+    });
+
+    const data = await res.json();
+    const reply = data.reply || "Error: no response";
+    output.innerHTML += `<div><b>Bot:</b> ${reply}</div>`;
+    output.scrollTop = output.scrollHeight;
+  } catch (err) {
+    output.innerHTML += `<div style="color:red;">Error connecting to chatbot.</div>`;
+  }
 }
-
-function addMessage(text, sender) {
-  const msg = document.createElement('div');
-  msg.classList.add('message', sender);
-  msg.innerText = text;
-  chatBox.appendChild(msg);
-  chatBox.scrollTop = chatBox.scrollHeight;
-}
-
-sendBtn.onclick = async () => {
-  const message = userInput.value.trim();
-  if (!message) return;
-  addMessage(message, "user");
-  userInput.value = "";
-
-  addMessage("Typing...", "bot");
-  const botReply = await getBotReply(message);
-  chatBox.lastChild.innerText = botReply;
-};
